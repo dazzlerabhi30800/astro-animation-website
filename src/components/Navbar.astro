@@ -3,93 +3,98 @@ const { pathname } = Astro.url;
 ---
 
 <nav>
-    <div class="logo">DA</div>
-    <ul class="links">
-        <li class={`link ${pathname === "/" ? "active" : ""}`}>
-            <a href="/">Home</a>
-        </li>
-
-        <li class={`link ${pathname === "/about" ? "active" : ""}`}>
-            <a href="/about">About</a>
-        </li>
-    </ul>
+  <div class="logo">nfts market</div>
+  <ul class="links">
+    <li class="link active">Home</li>
+    <li class="link">About</li>
+    <li class="link">Contact Us</li>
+    <li class="link">Blog</li>
+  </ul>
 </nav>
 
+<script>
+  const navLinks = document.querySelectorAll(".link") as NodeListOf<Element>;
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      link.classList.add("active");
+    });
+  });
+</script>
+
 <style>
-    nav {
-        color: #fff;
-        padding: 0.5rem 1rem;
-        display: flex;
-        justify-content: space-between;
+  nav {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-Zeyada);
+    font-weight: 700;
+    text-shadow: 0 0 15px #c36cf596;
+    font-size: 2rem;
+    background: linear-gradient(to right, #fadc7f, #f2cf5e);
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: background-change 16s infinite linear;
+  }
+  @keyframes background-change {
+    0% {
+      background-position: 0 0;
     }
 
-    .logo {
-        font-size: 2.5rem;
-        background: linear-gradient(to right, #fadc7f, #e853d9);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-        animation: background-change 18s infinite linear;
-    }
-    @keyframes background-change {
-        0% {
-            background-position: 0 0;
-        }
-
-        25% {
-            background-position: 20vh 20vh;
-        }
-
-        50% {
-            background-position: 40vh 40vh;
-        }
-
-        75% {
-            background-position: 60vh 60vh;
-        }
-
-        100% {
-            background-position: 80vh 80vh;
-        }
+    25% {
+      background-position: 20vh 20vh;
     }
 
-    .links {
-        display: flex;
-        gap: 1.8rem;
-        list-style: none;
-        align-items: center;
-        justify-content: center;
-    }
-    .link {
-        font-family: "Poppins", sans-serif;
-        transition: 0.3s linear;
-        position: relative;
-    }
-    .link::after {
-        position: absolute;
-        content: "";
-        bottom: -5px;
-        width: 100%;
-        height: 2px;
-        left: 0;
-        transform-origin: center;
-        scale: 0;
-        transition: 0.3s linear;
-        background: linear-gradient(to left, #6ec2f6, #9c6ef3);
-        border-radius: 30px;
-    }
-    .link.active::after {
-        scale: 1;
+    50% {
+      background-position: 40vh 40vh;
     }
 
-    .links a {
-        text-decoration: none;
-        color: #fff;
+    75% {
+      background-position: 60vh 60vh;
     }
 
-    @media (hover: hover) {
-        .links li {
-            cursor: pointer;
-        }
+    100% {
+      background-position: 80vh 80vh;
     }
+  }
+
+  .links {
+    display: flex;
+    gap: 1.8rem;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .link {
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s linear;
+    position: relative;
+  }
+  .link::after {
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform-origin: left;
+    scale: 0;
+    background: linear-gradient(to right, #f6a06e, #cc72f5);
+    border-radius: 30px;
+    transition: 0.3s linear;
+  }
+  .link.active::after {
+    scale: 1;
+  }
+
+  @media (hover: hover) {
+    .links li {
+      cursor: pointer;
+    }
+  }
 </style>
