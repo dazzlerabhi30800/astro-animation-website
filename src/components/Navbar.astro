@@ -1,41 +1,158 @@
 ---
-const { pathname } = Astro.url;
+import { Sprite } from "astro-icon";
 ---
 
 <nav>
   <div class="logo">nfts market</div>
-  <ul class="links">
-    <li class="link active">Home</li>
-    <li class="link">About</li>
-    <li class="link">Contact Us</li>
-    <li class="link">Blog</li>
-  </ul>
+  <div class="link-wrapper">
+    <ul class="links">
+      <li class="link active">Home</li>
+      <li class="link">About</li>
+      <li class="link">Contact Us</li>
+      <li class="link">Blog</li>
+    </ul>
+    <div class="login-button-container">
+      <button class="btn search">
+        <Sprite.Provider>
+          <Sprite name="ion:search-outline" />
+        </Sprite.Provider>
+      </button>
+      <button class="btn sign">Sign In</button>
+    </div>
+  </div>
+  <button class="menu-btn">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </button>
 </nav>
 
 <script>
   const navLinks = document.querySelectorAll(".link") as NodeListOf<Element>;
+  const menuBtn = document.querySelector(".menu-btn") as HTMLButtonElement;
+  const navbar = document.querySelector(".link-wrapper") as HTMLDivElement;
 
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
+      const activeLink = document.querySelector(".active");
+      activeLink?.classList.remove("active");
       link.classList.add("active");
     });
   });
+
+  // functionality to show navbar
+  menuBtn?.addEventListener("click", () => {
+    navbar.classList.toggle("show");
+    menuBtn.classList.toggle("active");
+    if (navbar.classList.contains("show")) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+  });
 </script>
 
-<style>
-  nav {
+<style lang="css">
+  [astro-icon] {
+    width: 25px;
+    height: 25px;
+  }
+  [astro-icon="mdi-light:menu"],
+  [astro-icon="clarity:times-line"] {
+    width: 30px;
+    height: 30px;
+  }
+  .menu-btn {
     color: #fff;
-    padding: 0.5rem 1rem;
+    position: relative;
+    z-index: 444;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .line {
+    width: 26px;
+    height: 3px;
+    border-radius: 30px;
+    background: #fff;
+    transition: 0.3s linear;
+  }
+
+  .menu-btn.active .line {
+    background: linear-gradient(to right, #94f1fd, #e48cf2);
+  }
+
+  .menu-btn.active .line:nth-child(1) {
+    rotate: -45deg;
+    transform: translate(0px, 0px);
+  }
+  .menu-btn.active .line:nth-child(2) {
+    display: none;
+  }
+
+  .menu-btn.active .line:nth-child(3) {
+    rotate: 45deg;
+    transform: translate(-6px, -6px);
+  }
+
+  nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    color: #fff;
+  }
+
+  .link-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    position: absolute;
+    background: #000000d3;
+    backdrop-filter: blur(15px);
+    top: 0;
+    right: 0;
+    width: 70%;
+    transform: translateX(1000px);
+    height: 100%;
+    z-index: 44;
+    transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .link-wrapper.show {
+    transform: translateX(0);
+  }
+
+  .login-button-container {
+    display: flex;
+    gap: 1.6rem;
+    padding: 2rem;
+  }
+  button {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-family: var(--font-Poppins);
+    background: none;
+    color: #fff;
+    transition: 0.3s linear;
+    padding: 5px 15px;
+  }
+  .search {
+    color: #d3bef4;
+  }
+
+  .sign {
+    border: 2px solid #b28ad6;
   }
 
   .logo {
     font-family: var(--font-Zeyada);
     font-weight: 700;
     text-shadow: 0 0 15px #c36cf596;
-    font-size: 2rem;
-    background: linear-gradient(to right, #fadc7f, #f2cf5e);
+    white-space: nowrap;
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    background: linear-gradient(to right, #fadc7f, #ed5ef2);
     text-transform: uppercase;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -62,13 +179,13 @@ const { pathname } = Astro.url;
       background-position: 80vh 80vh;
     }
   }
-
   .links {
     display: flex;
     gap: 1.8rem;
     list-style: none;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 2rem;
   }
   .link {
     font-family: "Poppins", sans-serif;
@@ -95,6 +212,41 @@ const { pathname } = Astro.url;
   @media (hover: hover) {
     .links li {
       cursor: pointer;
+    }
+    .search:hover {
+      color: #a674f6;
+    }
+    .sign:hover {
+      border-color: transparent;
+      background: linear-gradient(to left, #f79b5d, #c469f5);
+      color: #000;
+    }
+  }
+
+  @media Screen and (min-width: 800px) {
+    .link-wrapper {
+      flex-basis: 80%;
+      justify-content: space-between;
+      position: static;
+      transform: translateX(0);
+      background: none;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+    }
+    .links {
+      flex-direction: row;
+      padding: 0;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+    }
+    .menu-btn {
+      display: none;
+    }
+    .login-button-container {
+      padding: 0;
+      align-items: center;
     }
   }
 </style>
