@@ -1,11 +1,11 @@
 ---
-import HeroSection from "../components/HeroSection.astro";
+import HeroSection from "../components/HeroSection.tsx";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="NFT Market.">
 	<main>
-		<HeroSection />
+		<HeroSection client:load />
 	</main>
 </Layout>
 
