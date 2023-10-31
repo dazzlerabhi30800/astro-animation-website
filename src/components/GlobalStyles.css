@@ -4,6 +4,7 @@
         align-items: center;
         gap: 6rem;
         padding: 3rem;
+        min-height: 80vh;
         justify-content: space-around;
     }
 

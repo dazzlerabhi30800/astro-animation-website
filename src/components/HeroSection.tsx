@@ -38,7 +38,6 @@ const HeroSection = () => {
                 <img src="./nft/cat-nft.jpg" alt="cat-nft" />
             </motion.div>
         </section >
-
     );
 
 }

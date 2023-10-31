@@ -1,0 +1,73 @@
+---
+const imageData: string[] = [
+    "./Nft-Images/monkey.jpg",
+    "./Nft-Images/neon.jpg",
+    "./Nft-Images/south-pacific.jpg",
+    "./Nft-Images/tiger.jpg",
+    "./Nft-Images/monkey-2.jpg",
+    "./Nft-Images/viking.jpg",
+];
+---
+
+<section class="section nft-gallery">
+    <h2>nft gallery</h2>
+    <div class="nft-gallery-wrapper">
+        {
+            imageData.map((data, index) => {
+                return (
+                    <div
+                        style={{ backgroundImage: `url(${imageData[index]})` }}
+                        class="nft-image"
+                    />
+                );
+            })
+        }
+    </div>
+</section>
+
+<style>
+    .nft-gallery {
+        flex-direction: column;
+        margin: 20px 0;
+    }
+    h2 {
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    .nft-gallery-wrapper {
+        display: inline-flex;
+        gap: 3rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nft-image {
+        width: 320px;
+        overflow: hidden;
+        height: 320px;
+        background-size: 40vh;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    @media Screen and (min-width: 800px) {
+        .nft-gallery {
+            gap: 5rem;
+        }
+        .nft-gallery-wrapper {
+            gap: 3rem;
+        }
+        .nft-image {
+            flex-basis: calc(100% / 4);
+            cursor: pointer;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .nft-image:hover {
+            background-size: 60vh;
+            scale: 1.05;
+        }
+    }
+</style>
