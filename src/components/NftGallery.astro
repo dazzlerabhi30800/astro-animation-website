@@ -16,7 +16,7 @@ const imageData: string[] = [
             imageData.map((data, index) => {
                 return (
                     <div
-                        style={{ backgroundImage: `url(${imageData[index]})` }}
+                        style={{ backgroundImage: `url(${data})` }}
                         class="nft-image"
                     />
                 );
@@ -47,7 +47,7 @@ const imageData: string[] = [
         width: 320px;
         overflow: hidden;
         height: 320px;
-        background-size: 40vh;
+        background-size: 50vh;
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -57,10 +57,11 @@ const imageData: string[] = [
             gap: 5rem;
         }
         .nft-gallery-wrapper {
-            gap: 3rem;
+            gap: 4rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
         }
         .nft-image {
-            flex-basis: calc(100% / 4);
             cursor: pointer;
             transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
@@ -68,6 +69,9 @@ const imageData: string[] = [
         .nft-image:hover {
             background-size: 60vh;
             scale: 1.05;
+            box-shadow:
+                -10px -10px 15px 3px rgba(73, 241, 241, 0.19),
+                10px 10px 15px 3px rgba(247, 114, 201, 0.19);
         }
     }
 </style>

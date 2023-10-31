@@ -24,6 +24,8 @@ const HeroSection = () => {
             x: 250
         }
     }
+
+
     return (
         <section className="section hero-section">
             <motion.div animate="visible" initial="hidden" variants={textMotion} transition={{ ease: "easeInOut", duration: 0.4 }} className="text-wrapper">
@@ -44,3 +46,4 @@ const HeroSection = () => {
 
 
 export default HeroSection;
+
