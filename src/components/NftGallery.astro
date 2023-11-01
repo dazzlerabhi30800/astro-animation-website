@@ -1,11 +1,44 @@
 ---
-const imageData: string[] = [
-    "./Nft-Images/monkey.jpg",
-    "./Nft-Images/neon.jpg",
-    "./Nft-Images/south-pacific.jpg",
-    "./Nft-Images/tiger.jpg",
-    "./Nft-Images/monkey-2.jpg",
-    "./Nft-Images/viking.jpg",
+const imageData: { img: string; price: number }[] = [
+    {
+        img: "./Nft-Images/monkey.jpg",
+        price: 280,
+    },
+
+    {
+        img: "./Nft-Images/neon.jpg",
+        price: 599,
+    },
+
+    {
+        img: "./Nft-Images/south-pacific.jpg",
+        price: 159,
+    },
+
+    {
+        img: "./Nft-Images/tiger.jpg",
+        price: 399,
+    },
+
+    {
+        img: "./Nft-Images/monkey-2.jpg",
+        price: 499,
+    },
+
+    {
+        img: "./Nft-Images/viking.jpg",
+        price: 279,
+    },
+
+    {
+        img: "./Nft-Images/cat-nft.jpg",
+        price: 489,
+    },
+
+    {
+        img: "./Nft-Images/monkey-3.jpg",
+        price: 649,
+    },
 ];
 ---
 
@@ -16,9 +49,14 @@ const imageData: string[] = [
             imageData.map((data, index) => {
                 return (
                     <div
-                        style={{ backgroundImage: `url(${data})` }}
+                        style={{ backgroundImage: `url(${data.img})` }}
                         class="nft-image"
-                    />
+                    >
+                        <div class="details-container">
+                            <span class="nft-price">${data.price}</span>
+                            <button class="btn buy-btn">Buy</button>
+                        </div>
+                    </div>
                 );
             })
         }
@@ -26,10 +64,14 @@ const imageData: string[] = [
 </section>
 
 <style>
+    :root {
+        --spread-radius: 5px;
+    }
     .nft-gallery {
         flex-direction: column;
         margin: 20px 0;
     }
+
     h2 {
         font-size: 3rem;
         text-transform: uppercase;
@@ -47,31 +89,92 @@ const imageData: string[] = [
         width: 320px;
         overflow: hidden;
         height: 320px;
+        position: relative;
         background-size: 50vh;
         background-repeat: no-repeat;
         background-position: center;
     }
 
+    .details-container {
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+        left: 0;
+        background: #0000009c;
+        backdrop-filter: blur(15px);
+        font-weight: 500;
+        color: #fff;
+        font-size: 1.1rem;
+    }
+    .nft-price {
+        --price-color: #72ece2;
+        background: #08080894;
+        border: 1px solid var(--price-color);
+        color: var(--price-color);
+        padding: 7px 1.5rem;
+        border-radius: 2px;
+    }
+    .btn {
+        --button-color: #f45ed4;
+        border: 1px solid var(--button-color);
+        color: var(--button-color);
+        outline: none;
+        padding: 7px 1.5rem;
+        border-radius: 2px;
+        background: #08080894;
+        font-size: 1.1rem;
+    }
+
+    @media (hover: hover) {
+        .btn:hover {
+            --button-color: #f29f64;
+            border-color: transparent;
+            background: var(--button-color);
+            color: #000;
+        }
+    }
+
     @media Screen and (min-width: 800px) {
         .nft-gallery {
             gap: 5rem;
+            display: flex;
         }
         .nft-gallery-wrapper {
             gap: 4rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
         }
         .nft-image {
-            cursor: pointer;
-            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            /* cursor: pointer; */
+            transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+            overflow: hidden;
+        }
+
+        .details-container {
+            height: 100%;
+            left: initial;
+            right: 0;
+            width: 60%;
+            flex-direction: column;
+            gap: 2rem;
+            border-radius: 30px 0 0 30px;
+            transform: translateX(150px);
+            opacity: 0;
+            transition: 0.3s linear;
         }
 
         .nft-image:hover {
             background-size: 60vh;
             scale: 1.05;
-            box-shadow:
-                -10px -10px 15px 3px rgba(73, 241, 241, 0.19),
-                10px 10px 15px 3px rgba(247, 114, 201, 0.19);
+        }
+
+        .nft-image:hover .details-container {
+            opacity: 1;
+            transform: translateX(0);
         }
     }
 </style>
