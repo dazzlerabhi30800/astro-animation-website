@@ -64,7 +64,7 @@ const mintData: Array<mintData> = [
         {
             opacity: 0,
             x: 500,
-            ease: "power2.out",
+            ease: "elastic.out(1.2,0.5)",
         },
 
         {
@@ -75,8 +75,8 @@ const mintData: Array<mintData> = [
             },
             opacity: 1,
             x: 0,
-            duration: 2,
-            ease: "power2.out",
+            duration: 3,
+            ease: "elastic.out(1.2,0.5)",
         },
     );
 
@@ -85,7 +85,7 @@ const mintData: Array<mintData> = [
         {
             opacity: 0,
             x: -500,
-            ease: "power2.out",
+            ease: "elastic.out(1.2,0.5)",
         },
 
         {
@@ -96,8 +96,8 @@ const mintData: Array<mintData> = [
             },
             opacity: 1,
             x: 0,
-            duration: 2,
-            ease: "power2.out",
+            duration: 3,
+            ease: "elastic.out(1.2,0.5)",
         },
     );
 </script>
@@ -127,7 +127,7 @@ const mintData: Array<mintData> = [
         gap: 1rem;
         height: 150px;
         width: 100%;
-        max-width: 480px;
+        max-width: 500px;
         border-radius: 10px;
     }
 
