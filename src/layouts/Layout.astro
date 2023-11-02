@@ -44,23 +44,25 @@ const { title } = Astro.props;
 	* {
 		margin: 0;
 		padding: 0;
-		box-sizing: border-box;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		scroll-behavior: smooth;
+		overflow-x: hidden;
 	}
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
+		position: relative;
 		/* background: #13151a; */
 		background: linear-gradient(to left, #100b20, #150b15);
+		background-repeat: no-repeat;
 	}
 	h1,
 	h2,
 	h3 {
 		font-family: var(--font-Luckiest);
 		font-weight: 500;
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		scroll-behavior: smooth;
 	}
 
 	/* Scrollbar Styling */
@@ -71,6 +73,7 @@ const { title } = Astro.props;
 	html::-webkit-scrollbar-thumb {
 		background: #e6e6e6;
 		border-radius: 20px;
+		overflow-x: hidden;
 	}
 	code {
 		font-family:
