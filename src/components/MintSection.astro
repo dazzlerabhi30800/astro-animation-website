@@ -1,0 +1,130 @@
+---
+type mintData = {
+    img: string,
+    heading: string,
+    desc: string
+}
+const mintData: Array<mintData> = [
+    {
+        img: "./nft/mint-icon-1.png", 
+        heading: "Connect your wallet",
+        desc: "Use Trust Wallet, Metawork or any wallet to connect to the app",
+    },
+    {
+        img: "./nft/mint-icon-2.png", 
+        heading: "Select your quantity",
+        desc: "Upload your NFTs and set a title description and price",
+    },
+    {
+        img: "./nft/mint-icon-3.png", 
+        heading: "Confirm transaction",
+        desc: "Earn ETH an BIT for all your NFTs that you sell on our marketplace",
+    },
+    {
+        img: "./nft/mint-icon-4.png", 
+        heading: "Receive your NFTs",
+        desc: "Latin professor at Hampden-Sydney College in Virginia",
+    },
+]
+---
+
+<section class="section mint-section">
+    <h2>How to Mint</h2>
+    <div class="mint-wrapper">
+    {mintData.map((mint) => {
+        return (
+            <div  class="mint-comp">
+                <img src={mint.img} class="mint-img" alt="">
+                <div class="mint-info">
+                <h3>{mint.heading}</h3>
+                <p>{mint.desc}</p>
+                </div>
+            </div>
+        )
+    })}
+        
+    </div>
+</section>
+
+
+
+<style>
+.mint-section { 
+    justify-content: start;
+    padding: 0rem;
+    gap: 2rem;
+}
+ .mint-wrapper {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    gap: 2rem;
+    margin: 0 auto;
+    flex-wrap: wrap;
+ }
+ .mint-comp {
+    display: grid;
+    grid-template-columns: 100px auto;
+    place-content: center;
+    padding: 1.5rem;
+    background:  #1c1827;
+    gap: 2rem;
+    width: clamp(300px, 100%, 480px);
+    border-radius: 10px;
+ }
+ 
+ .mint-img {
+    width: auto;
+    height: 70px;
+ }
+
+ 
+ .mint-info {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+     font-size: clamp(0.8rem, 1.2vw, 16px);
+     font-weight: 500;
+    //  margin-top: 10px;
+ }
+ h3 {
+    font-size: clamp(1.2rem, 1.8vw, 2.5rem);
+ }
+ .mint-info p {
+    color: #e0e0e0;
+    width: clamp(200px, 100%, 300px);
+ }
+ 
+
+ @media Screen and (min-width: 800px) {
+    .mint-section {
+        gap: 4rem;
+        justify-content: center;
+    }
+    .mint-comp {
+        transition: 0.3s linear;
+        position: relative;
+        height: 200px;
+        width: 580px;
+    }
+    .mint-img {
+        height: 90px;
+    }
+    .mint-comp::after {
+        position: absolute;
+        content: "";
+        border-radius: 10px;
+        inset: -3px;
+        z-index: -1;
+        background: linear-gradient(to left, rgb(107, 243, 243) , rgb(239, 110, 241));
+        transform-origin: top left;
+        transform: scale(0);
+        transition: 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+    .mint-comp:hover::after {
+        transform: scale(1);
+    }
+ }
+</style>
