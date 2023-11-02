@@ -1,3 +1,7 @@
+---
+import { Sprite } from "astro-icon";
+---
+
 <section class="section about-section">
   <h2>About the Platform</h2>
   <div class="feature-wrapper">
@@ -38,12 +42,20 @@
           </p>
         </div>
         <div class="feature-stats">
-          <div class="stats">
-            <h3>4,500+</h3>
+          <div class="stats chain-stats">
+            <button class="stat-btn">
+              <Sprite.Provider>
+                <Sprite name="ion:crop-outline" />
+              </Sprite.Provider>
+            </button>
             <p>Collections Indexed every 5mins.</p>
           </div>
-          <div class="stats">
-            <h3>2.5x</h3>
+          <div class="stats chain-stats">
+            <button class="stat-btn">
+              <Sprite.Provider>
+                <Sprite name="carbon:select-window" />
+              </Sprite.Provider>
+            </button>
             <p>Difference in Floor & Estimated Value</p>
           </div>
         </div>
@@ -53,6 +65,11 @@
 </section>
 
 <style>
+  [astro-icon] {
+    width: 25px;
+    height: 25px;
+    color: #fff;
+  }
   .feature-wrapper {
     display: flex;
     flex-direction: column;
@@ -72,6 +89,13 @@
     min-width: 200px;
     width: 90%;
     max-width: 500px;
+  }
+  .stat-btn {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 0.8rem;
+    background: linear-gradient(to top, rgb(148, 69, 237), rgb(246, 93, 118));
   }
 
   .feature-info {
@@ -96,6 +120,13 @@
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem;
+  }
+
+  .chain-stats {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: row;
   }
 
   @media Screen and (min-width: 800px) {
