@@ -71,6 +71,39 @@ const artworkData: artwork[] = [
     </div>
 </section>
 
+<script>
+    import { gsap } from "gsap";
+    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    const artworks = document.querySelectorAll(
+        ".artwork",
+    ) as NodeListOf<HTMLDivElement>;
+
+    artworks.forEach((artwork) => {
+        gsap.fromTo(
+            artwork,
+            {
+                opacity: 0,
+                y: -400,
+                ease: "elastic.out(i,0.75)",
+                duration: 2.5,
+            },
+            {
+                scrollTrigger: {
+                    trigger: artwork,
+                    start: "0% 80%",
+                    end: "bottom bottom",
+                },
+                opacity: 1,
+                y: 0,
+                duration: 2.5,
+                ease: "elastic.out(i,0.75)",
+            },
+        );
+    });
+</script>
+
 <style>
     .artwork-section {
         align-items: center;
