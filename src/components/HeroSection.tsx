@@ -1,4 +1,4 @@
-import './GlobalStyles.css';
+import '../styles/GlobalStyles.css';
 import { motion } from 'framer-motion';
 
 

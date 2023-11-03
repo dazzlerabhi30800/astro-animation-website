@@ -3,6 +3,7 @@ import About from "../components/About.astro";
 import Artist from "../components/Artist.astro";
 import Artwork from "../components/Artwork.astro";
 import HeroSection from "../components/HeroSection.tsx";
+import Accordian from "../components/Accordian.tsx";
 import MintSection from "../components/MintSection.astro";
 import NftGallery from "../components/NftGallery.astro";
 import Layout from "../layouts/Layout.astro";
@@ -16,7 +17,6 @@ import Layout from "../layouts/Layout.astro";
 		<About />
 		<Artwork />
 		<Artist />
+		<Accordian client:load />
 	</main>
 </Layout>
-
-<style></style>
