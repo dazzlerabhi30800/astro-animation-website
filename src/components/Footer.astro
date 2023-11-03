@@ -1,0 +1,132 @@
+---
+import { Sprite } from "astro-icon";
+---
+
+<footer>
+    <button class="join-btn">Join community</button>
+    <div class="info-wrapper">
+        <div class="text-wrapper">
+            <div class="logo">NFTS Market</div>
+            <p>
+                We make it easy to discover, Invest and manage all your NFTs at
+                one place
+            </p>
+            <div class="social-icons-wrapper"></div>
+        </div>
+        <div class="copyright-wrapper">
+            <p class="copyright">
+                <span>&copy;</span>2023 NFTMarket All rights reserved.
+            </p>
+            <ul class="links">
+                <li>Privacy policy</li>
+                <li>Terms of use</li>
+                <li class="scroll-up">
+                    <Sprite.Provider>
+                        <Sprite name="carbon:chevron-up" />
+                    </Sprite.Provider>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script>
+    import { gsap } from "gsap";
+    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+    const scrollBtn = document.querySelector(".scroll-up") as HTMLUListElement;
+    scrollBtn.onclick = () => {
+        window.scrollTo(0, 0);
+    };
+</script>
+
+<style>
+    [astro-icon] {
+        width: 25px;
+        height: 25px;
+    }
+    footer {
+        min-height: 90vh;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+        width: 90%;
+        gap: 3rem;
+        margin: 0 auto;
+    }
+    .join-btn {
+        outline: none;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        color: #fff;
+        font-weight: 500;
+        background: linear-gradient(to left, rgb(249, 105, 249), #ed7295);
+    }
+    .info-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        /* width: 60%; */
+        width: 100%;
+    }
+    .logo {
+        font-size: clamp(1.8rem, 2vw + 10px, 3rem);
+    }
+    .text-wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0rem;
+    }
+
+    .copyright-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        align-items: center;
+        /* justify-content: space-between; */
+        padding: 1.5rem 0;
+        border-top: 1px solid #474747;
+        color: #ccc;
+        font-size: 0.9rem;
+    }
+    .copyright {
+        display: flex;
+        align-items: flex-start;
+    }
+    .links {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        justify-content: center;
+        gap: 3rem;
+    }
+
+    @media (hover: hover) {
+        .join-btn {
+            transition: 0.3s linear;
+        }
+        .join-btn:hover {
+            background: linear-gradient(to right, rgb(249, 105, 249), #ed7295);
+        }
+        li {
+            cursor: pointer;
+            transition: 0.3s linear;
+        }
+        li:hover {
+            color: #fff;
+        }
+    }
+
+    @media Screen and (min-width: 800px) {
+        .copyright-wrapper {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+</style>
