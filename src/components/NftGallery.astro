@@ -63,6 +63,36 @@ const imageData: { img: string; price: number }[] = [
     </div>
 </section>
 
+<script>
+    import { gsap } from "gsap";
+    import ScrollTrigger from "gsap/dist/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
+
+    const nftContainer = document.querySelector(".nft-gallery-wrapper");
+
+    gsap.fromTo(
+        nftContainer,
+        {
+            opacity: 0,
+            y: -300,
+            ease: "elastic.out(i,0.75)",
+            duration: 3,
+        },
+
+        {
+            scrollTrigger: {
+                trigger: nftContainer,
+                start: "0% 20%",
+                end: "bottom 70%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 3,
+            ease: "elastic.out(i,0.75)",
+        },
+    );
+</script>
+
 <style>
     :root {
         --spread-radius: 5px;
