@@ -1,0 +1,125 @@
+---
+import { Sprite } from "astro-icon";
+type artist = {
+    img: string;
+    name: string;
+};
+const artistData: artist[] = [
+    {
+        img: "./artist/02.png",
+        name: "Steph Jobs",
+    },
+
+    {
+        img: "./artist/03.png",
+        name: "Andry Moray",
+    },
+
+    {
+        img: "./artist/01.png",
+        name: "Zaid Ed",
+    },
+
+    {
+        img: "./artist/04.png",
+        name: "Laila Ed",
+    },
+
+    {
+        img: "./artist/05.png",
+        name: "John Clark",
+    },
+];
+---
+
+<section class="section artist-section">
+    <h2>Meet the artists</h2>
+    <div class="artist-wrapper">
+        {
+            artistData.map((artist) => {
+                let { img, name } = artist;
+                return (
+                    <div class="artist-comp">
+                        <img src={img} alt={name} />
+                        <p>{name}</p>
+                        <small>Artist</small>
+                        <div class="icons-wrapper">
+                            <Sprite.Provider>
+                                <Sprite name="jam:twitter" />
+                            </Sprite.Provider>
+                            <Sprite.Provider>
+                                <Sprite name="uil:discord" />
+                            </Sprite.Provider>
+                            <Sprite.Provider>
+                                <Sprite name="uil:instagram" />
+                            </Sprite.Provider>
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</section>
+
+<style>
+    [astro-icon] {
+        width: 22px;
+        height: 22px;
+        color: #fff;
+    }
+    .artist-wrapper {
+        display: inline-flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        align-content: stretch;
+        gap: 2rem;
+        justify-content: center;
+    }
+    .artist-comp {
+        background: var(--comp-background);
+        border-radius: 20px;
+        padding: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.2rem;
+        text-align: center;
+    }
+    .artist-comp p {
+        font-family: var(--font-Luckiest);
+        font-size: 1.2rem;
+        margin: 1.2rem 0 2px;
+    }
+    .artist-comp small {
+        font-family: var(--font-Poppins);
+        color: #ccc;
+    }
+    .icons-wrapper {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    .artist-comp img {
+        height: 250px;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+    @media (hover: hover) {
+        [astro-icon] {
+            cursor: pointer;
+            transition: 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        }
+        [astro-icon]:hover {
+            scale: 1.3;
+        }
+    }
+
+    @media Screen and (min-width: 800px) {
+        .artist-wrapper {
+            width: 80%;
+            margin: 1rem auto;
+        }
+    }
+</style>

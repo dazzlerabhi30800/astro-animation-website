@@ -1,0 +1,144 @@
+---
+type artwork = {
+    img: string;
+    name: string;
+    creator: string;
+};
+const artworkData: artwork[] = [
+    {
+        img: "./artwork/artwork-1.jpg",
+        name: "#Metaverse",
+        creator: "By TheSalvare",
+    },
+
+    {
+        img: "./artwork/artwork-2.jpg",
+        name: "#Polly Doll",
+        creator: "By TheSalvare",
+    },
+
+    {
+        img: "./artwork/artwork-3.jpg",
+        name: "#Alec Art",
+        creator: "By Georgijevic",
+    },
+
+    {
+        img: "./artwork/artwork-4.jpg",
+        name: "#Toxic Poeth",
+        creator: "By Yayoi",
+    },
+
+    {
+        img: "./artwork/artwork-5.jpg",
+        name: "#Saphyre",
+        creator: "By CryptoX",
+    },
+
+    {
+        img: "./artwork/artwork-6.jpg",
+        name: "#Charcuterie",
+        creator: "By Texira",
+    },
+    {
+        img: "./artwork/artwork-7.jpg",
+        name: "#Paradise",
+        creator: "By CryptoX",
+    },
+    {
+        img: "./artwork/artwork-8.jpg",
+        name: "#HighCity",
+        creator: "By TheSalvare",
+    },
+];
+---
+
+<section class="section artwork-section">
+    <h2>Latest Artwork</h2>
+    <div class="artwork-wrapper">
+        {
+            artworkData.map((artwork) => {
+                let { img, name, creator } = artwork;
+                return (
+                    <div class="artwork">
+                        <img src={img} alt={name} />
+                        <p>{name}</p>
+                        <small>{creator}</small>
+                    </div>
+                );
+            })
+        }
+    </div>
+</section>
+
+<style>
+    .artwork-section {
+        align-items: center;
+    }
+    .artwork-wrapper {
+        display: inline-flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        align-content: stretch;
+        gap: 2rem;
+        justify-content: center;
+    }
+    .artwork {
+        background: var(--comp-background);
+        padding: 0.7rem;
+        border-radius: 20px;
+        text-align: center;
+    }
+    .artwork img {
+        height: 280px;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .artwork p {
+        margin: 5px auto 0px;
+        font-family: var(--font-Luckiest);
+        font-size: clamp(18px, 2vw + 5px, 1.5rem);
+    }
+    .artwork small {
+        color: #c7c3c3;
+        font-weight: 500;
+    }
+
+    @media Screen and (min-width: 1000px) {
+        .artwork-wrapper {
+            margin: 3rem 0;
+            gap: 2.5rem;
+        }
+        .artwork:nth-child(2) {
+            transform: translateY(-30px);
+        }
+        .artwork:nth-child(4) {
+            transform: translateY(-30px);
+        }
+
+        .artwork:nth-child(6) {
+            transform: translateY(-30px);
+        }
+
+        .artwork:nth-child(8) {
+            transform: translateY(-30px);
+        }
+
+        .artwork:nth-child(1) {
+            transform: translateY(30px);
+        }
+
+        .artwork:nth-child(3) {
+            transform: translateY(30px);
+        }
+
+        .artwork:nth-child(5) {
+            transform: translateY(30px);
+        }
+
+        .artwork:nth-child(7) {
+            transform: translateY(30px);
+        }
+    }
+</style>
