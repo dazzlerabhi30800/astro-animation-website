@@ -118,13 +118,19 @@ const artistData: artist[] = [
         }
     }
 
-    @media Screen and (min-width: 800px) {
+    @media Screen and (min-width: 1000px) {
         .artist-section {
             justify-content: center;
         }
         .artist-wrapper {
             width: 100%;
-            margin: 1rem auto;
+            margin: 2rem auto;
+        }
+        .artist-comp:nth-child(odd) {
+            transform: translateY(30px);
+        }
+        .artist-comp:nth-child(even) {
+            transform: translateY(-30px);
         }
     }
 </style>
