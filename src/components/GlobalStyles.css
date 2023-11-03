@@ -2,7 +2,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 6rem;
-  padding: 3rem;
+  padding: 1rem;
   min-height: 100vh;
   justify-content: space-around;
 }
