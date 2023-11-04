@@ -7,7 +7,40 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
+<script>
+	import { gsap } from "gsap";
+	import ScrollTrigger from "gsap/dist/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	const h2Headings = document.querySelectorAll(
+		"h2",
+	) as NodeListOf<HTMLHeadingElement>;
+
+	h2Headings.forEach((heading) => {
+		gsap.fromTo(
+			heading,
+			{
+				opacity: 0,
+				y: -300,
+				ease: "elastic.out(i,0.75)",
+				duration: 2,
+			},
+
+			{
+				scrollTrigger: {
+					trigger: heading,
+					start: "80% 80%",
+					end: "bottom bottom",
+				},
+				opacity: 1,
+				y: 0,
+				duration: 2,
+				ease: "elastic.out(i,0.75)",
+			},
+		);
+	});
+</script>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -165,37 +198,3 @@ const { title } = Astro.props;
 		-webkit-tap-highlight-color: transparent;
 	}
 </style>
-
-<script>
-	import { gsap } from "gsap";
-	import ScrollTrigger from "gsap/dist/ScrollTrigger";
-	gsap.registerPlugin(ScrollTrigger);
-
-	const h2Headings = document.querySelectorAll(
-		"h2",
-	) as NodeListOf<HTMLHeadingElement>;
-
-	h2Headings.forEach((heading) => {
-		gsap.fromTo(
-			heading,
-			{
-				opacity: 0,
-				y: -300,
-				ease: "elastic.out(i,0.75)",
-				duration: 2,
-			},
-
-			{
-				scrollTrigger: {
-					trigger: heading,
-					start: "80% 80%",
-					end: "bottom bottom",
-				},
-				opacity: 1,
-				y: 0,
-				duration: 2,
-				ease: "elastic.out(i,0.75)",
-			},
-		);
-	});
-</script>

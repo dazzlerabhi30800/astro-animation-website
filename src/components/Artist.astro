@@ -72,31 +72,36 @@ const artistData: artist[] = [
         ".artist-section",
     ) as HTMLTableSectionElement;
 
-    artists.forEach((artist, index) => {
-        gsap.fromTo(
-            artist,
-            {
-                opacity: 0,
-                y: -400,
-                ease: "elastic.out(i,0.75)",
-                duration: 2.5,
-                delay: index * 0.2,
-            },
-            {
-                scrollTrigger: {
-                    trigger: artistSection,
-                    // trigger: artist,
-                    markers: true,
-                    start: "0% 30%",
-                    end: "bottom 70%",
+    function showArtists() {
+        artists.forEach((artist, index) => {
+            gsap.fromTo(
+                artist,
+                {
+                    opacity: 0,
+                    y: -400,
+                    ease: "elastic.out(i,0.75)",
+                    duration: 2.5,
+                    delay: index * 0.2,
                 },
-                opacity: 1,
-                y: 0,
-                duration: 2.5,
-                delay: index * 0.2,
-                ease: "elastic.out(i,0.75)",
-            },
-        );
+                {
+                    scrollTrigger: {
+                        trigger: artistSection,
+                        start: "0% 30%",
+                        end: "bottom 80%",
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 2.5,
+                    delay: index * 0.2,
+                    ease: "elastic.out(i,0.75)",
+                },
+            );
+        });
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.innerWidth >= 800) {
+            showArtists();
+        }
     });
 </script>
 
