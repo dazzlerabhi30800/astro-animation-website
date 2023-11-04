@@ -61,7 +61,7 @@ const artworkData: artwork[] = [
                 let { img, name, creator } = artwork;
                 return (
                     <div class="artwork">
-                        <img src={img} alt={name} />
+                        <img loading="lazy" src={img} alt={name} />
                         <p>{name}</p>
                         <small>{creator}</small>
                     </div>

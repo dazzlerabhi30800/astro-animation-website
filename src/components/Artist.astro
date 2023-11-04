@@ -40,7 +40,7 @@ const artistData: artist[] = [
                 let { img, name } = artist;
                 return (
                     <div class="artist-comp">
-                        <img src={img} alt={name} />
+                        <img loading="lazy" src={img} alt={name} />
                         <p>{name}</p>
                         <small>Artist</small>
                         <div class="icons-wrapper">
