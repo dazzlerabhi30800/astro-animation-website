@@ -21,9 +21,11 @@ import { Sprite } from "astro-icon";
                 <li>Privacy policy</li>
                 <li>Terms of use</li>
                 <li class="scroll-up">
-                    <Sprite.Provider>
-                        <Sprite name="carbon:chevron-up" />
-                    </Sprite.Provider>
+                    <button class="scroll-btn">
+                        <Sprite.Provider>
+                            <Sprite name="carbon:chevron-up" />
+                        </Sprite.Provider>
+                    </button>
                 </li>
             </ul>
         </div>
@@ -105,6 +107,12 @@ import { Sprite } from "astro-icon";
         list-style: none;
         justify-content: center;
         gap: 3rem;
+    }
+    .scroll-btn {
+        border: none;
+        outline: none;
+        background: none;
+        color: #ccc;
     }
 
     @media (hover: hover) {
