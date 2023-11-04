@@ -4,6 +4,7 @@ import { Sprite } from "astro-icon";
 
 <footer>
     <button class="join-btn">Join community</button>
+    <img src="./nft/curly-divider.svg" class="curly-divider" alt="divider" />
     <div class="info-wrapper">
         <div class="text-wrapper">
             <div class="logo">NFTS Market</div>
@@ -13,6 +14,7 @@ import { Sprite } from "astro-icon";
             </p>
             <div class="social-icons-wrapper"></div>
         </div>
+
         <div class="copyright-wrapper">
             <p class="copyright">
                 <span>&copy;</span>2023 NFTMarket All rights reserved.
@@ -30,6 +32,8 @@ import { Sprite } from "astro-icon";
             </ul>
         </div>
     </div>
+    <img src="./nft/circle-01.png" alt="" class="misc circle" />
+    <img src="./nft/x.png" alt="" class="misc cross" />
 </footer>
 
 <script>
@@ -48,16 +52,21 @@ import { Sprite } from "astro-icon";
         height: 25px;
     }
     footer {
+        position: relative;
         min-height: 90vh;
         color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         text-align: center;
         width: 90%;
         gap: 3rem;
         margin: 0 auto;
+    }
+
+    .curly-divider {
+        height: 25px;
     }
     .join-btn {
         outline: none;
@@ -73,12 +82,12 @@ import { Sprite } from "astro-icon";
         display: flex;
         flex-direction: column;
         gap: 4rem;
-        /* width: 60%; */
         width: 100%;
     }
     .logo {
         font-size: clamp(1.8rem, 2vw + 10px, 3rem);
     }
+
     .text-wrapper {
         display: flex;
         align-items: center;
@@ -115,6 +124,21 @@ import { Sprite } from "astro-icon";
         color: #ccc;
     }
 
+    .misc {
+        --misc-height: 30px;
+        position: absolute;
+    }
+    .circle {
+        height: var(--misc-height);
+        top: 50%;
+        left: 10%;
+    }
+    .cross {
+        height: var(--misc-height);
+        top: 10%;
+        right: 10%;
+    }
+
     @media (hover: hover) {
         .join-btn {
             transition: 0.3s linear;
@@ -135,6 +159,9 @@ import { Sprite } from "astro-icon";
         .copyright-wrapper {
             flex-direction: row;
             justify-content: space-between;
+        }
+        .misc {
+            --misc-height: 40px;
         }
     }
 </style>
