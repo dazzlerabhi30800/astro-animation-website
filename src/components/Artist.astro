@@ -64,14 +64,12 @@ const artistData: artist[] = [
 <script>
     import { gsap } from "gsap";
     import ScrollTrigger from "gsap/dist/ScrollTrigger";
-
     gsap.registerPlugin(ScrollTrigger);
-
     const artists = document.querySelectorAll(
         ".artist-comp",
     ) as NodeListOf<HTMLDivElement>;
 
-    artists.forEach((artist) => {
+    artists.forEach((artist, index) => {
         gsap.fromTo(
             artist,
             {
@@ -79,16 +77,19 @@ const artistData: artist[] = [
                 y: -400,
                 ease: "elastic.out(i,0.75)",
                 duration: 2.5,
+                delay: index * 0.2,
             },
             {
                 scrollTrigger: {
+                    markers: true,
                     trigger: artist,
-                    start: "80% 80%",
-                    end: "bottom bottom",
+                    start: "100% 30%",
+                    end: "400% bottom",
                 },
                 opacity: 1,
                 y: 0,
                 duration: 2.5,
+                delay: index * 0.2,
                 ease: "elastic.out(i,0.75)",
             },
         );
