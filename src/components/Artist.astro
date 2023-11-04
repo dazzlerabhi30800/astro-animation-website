@@ -68,6 +68,9 @@ const artistData: artist[] = [
     const artists = document.querySelectorAll(
         ".artist-comp",
     ) as NodeListOf<HTMLDivElement>;
+    const artistSection = document.querySelector(
+        ".artist-section",
+    ) as HTMLTableSectionElement;
 
     artists.forEach((artist, index) => {
         gsap.fromTo(
@@ -81,9 +84,11 @@ const artistData: artist[] = [
             },
             {
                 scrollTrigger: {
-                    trigger: artist,
-                    start: "100% 30%",
-                    end: "400% bottom",
+                    trigger: artistSection,
+                    // trigger: artist,
+                    markers: true,
+                    start: "0% 30%",
+                    end: "bottom 70%",
                 },
                 opacity: 1,
                 y: 0,
