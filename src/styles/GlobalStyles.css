@@ -91,19 +91,16 @@ h1 {
   height: 450px;
   border-radius: 8px;
   background: linear-gradient(to left, #f34ec2, transparent 50%, #72def6);
-  animation: background-change2 9s linear infinite alternate;
+  animation: background-change2 5s linear infinite;
 }
 
 @keyframes background-change2 {
   from {
     background-position: 0vh;
-    box-shadow: -10px -10px 60px 4px #f315b850, 10px 10px 60px 4px #06c5f04d;
   }
 
   to {
-    background-position: 100vh;
-
-    box-shadow: -10px -10px 60px 4px #06c5f064, 10px 10px 60px 4px #f004966f;
+    background-position: 41vh;
   }
 }
 
