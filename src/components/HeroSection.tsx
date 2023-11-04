@@ -47,7 +47,7 @@ const HeroSection = () => {
 
             {isLoaded &&
                 <motion.div animate="visible" initial="hidden" variants={imageMotion} transition={{ ease: "easeInOut", duration: 0.7 }} className="hero-img">
-                    <img loading='lazy' src="./nft/cat-nft.jpg" alt="cat-nft" />
+                    <img src="./nft/cat-nft.jpg" alt="cat-nft" />
                 </motion.div>
             }
 
