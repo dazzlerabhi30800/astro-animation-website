@@ -164,13 +164,13 @@ import { Sprite } from "astro-icon";
     width: 100%;
     height: 2px;
     transform-origin: left;
-    scale: 0;
+    transform: scale(0);
     background: linear-gradient(to right, #f6a06e, #cc72f5);
     border-radius: 30px;
     transition: 0.3s linear;
   }
   .link.active::after {
-    scale: 1;
+    transform: scale(1);
   }
 
   @media (hover: hover) {
