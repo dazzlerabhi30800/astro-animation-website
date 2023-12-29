@@ -1,156 +1,160 @@
 ---
 type artwork = {
-    img: string;
-    name: string;
-    creator: string;
+  img: string;
+  name: string;
+  creator: string;
 };
+
 const artworkData: artwork[] = [
-    {
-        img: "./artwork/artwork-1.jpg",
-        name: "#Metaverse",
-        creator: "By TheSalvare",
-    },
+  {
+    img: "./artwork/artwork-1.jpg",
+    name: "#Metaverse",
+    creator: "By TheSalvare",
+  },
 
-    {
-        img: "./artwork/artwork-2.jpg",
-        name: "#Polly Doll",
-        creator: "By TheSalvare",
-    },
+  {
+    img: "./artwork/artwork-2.jpg",
+    name: "#Polly Doll",
+    creator: "By TheSalvare",
+  },
 
-    {
-        img: "./artwork/artwork-3.jpg",
-        name: "#Alec Art",
-        creator: "By Georgijevic",
-    },
+  {
+    img: "./artwork/artwork-3.jpg",
+    name: "#Alec Art",
+    creator: "By Georgijevic",
+  },
 
-    {
-        img: "./artwork/artwork-4.jpg",
-        name: "#Toxic Poeth",
-        creator: "By Yayoi",
-    },
+  {
+    img: "./artwork/artwork-4.jpg",
+    name: "#Toxic Poeth",
+    creator: "By Yayoi",
+  },
 
-    {
-        img: "./artwork/artwork-5.jpg",
-        name: "#Saphyre",
-        creator: "By CryptoX",
-    },
+  {
+    img: "./artwork/artwork-5.jpg",
+    name: "#Saphyre",
+    creator: "By CryptoX",
+  },
 
-    {
-        img: "./artwork/artwork-6.jpg",
-        name: "#Charcuterie",
-        creator: "By Texira",
-    },
-    {
-        img: "./artwork/artwork-7.jpg",
-        name: "#Paradise",
-        creator: "By CryptoX",
-    },
-    {
-        img: "./artwork/artwork-8.jpg",
-        name: "#HighCity",
-        creator: "By TheSalvare",
-    },
+  {
+    img: "./artwork/artwork-6.jpg",
+    name: "#Charcuterie",
+    creator: "By Texira",
+  },
+  {
+    img: "./artwork/artwork-7.jpg",
+    name: "#Paradise",
+    creator: "By CryptoX",
+  },
+  {
+    img: "./artwork/artwork-8.jpg",
+    name: "#HighCity",
+    creator: "By TheSalvare",
+  },
 ];
 ---
 
 <section class="section artwork-section">
-    <h2>Latest Artwork</h2>
-    <div class="artwork-wrapper">
-        {
-            artworkData.map((artwork) => {
-                let { img, name, creator } = artwork;
-                return (
-                    <div class="artwork">
-                        <img loading="lazy" src={img} alt={name} />
-                        <p>{name}</p>
-                        <small>{creator}</small>
-                    </div>
-                );
-            })
-        }
-    </div>
-</section>
+  <h2>Latest Artwork</h2><div class="artwork-wrapper">
+    {
+      artworkData.map((artwork) => {
+        let { img, name, creator } = artwork;
 
-<script>
-    import { gsap } from "gsap";
-    import ScrollTrigger from "gsap/dist/ScrollTrigger";
-    gsap.registerPlugin(ScrollTrigger);
-    const artworks = document.querySelectorAll(
-        ".artwork",
-    ) as NodeListOf<HTMLDivElement>;
-
-    artworks.forEach((artwork) => {
-        gsap.fromTo(
-            artwork,
-            {
-                opacity: 0,
-                y: -400,
-                ease: "elastic.out(i,0.75)",
-                duration: 2.5,
-            },
-            {
-                scrollTrigger: {
-                    trigger: artwork,
-                    start: "40% 0%",
-                    end: "bottom bottom",
-                    markers: true,
-                },
-                opacity: 1,
-                y: 0,
-                duration: 2.5,
-                ease: "elastic.out(i,0.75)",
-            },
+        return (
+          <div class="artwork">
+            {" "}
+            <img loading="lazy" src={img} alt={name} /> <p> {name}</p>{" "}
+            <small> {creator}</small>{" "}
+          </div>
         );
-    });
-</script>
-
-<style>
-    .artwork-section {
-        align-items: center;
+      })
     }
+  </div>
+</section><script>
+  import { gsap } from "gsap";
+  import ScrollTrigger from "gsap/dist/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  const artworks = document.querySelectorAll(
+    ".artwork",
+  ) as NodeListOf<HTMLDivElement>;
+
+  artworks.forEach((artwork) => {
+    gsap.fromTo(
+      artwork,
+      {
+        opacity: 0,
+        y: -400,
+        ease: "elastic.out(i,0.75)",
+        duration: 2.5,
+      },
+
+      {
+        scrollTrigger: {
+          trigger: artwork,
+          start: "40% 0%",
+          end: "bottom bottom",
+        },
+
+        opacity: 1,
+        y: 0,
+        duration: 2.5,
+        ease: "elastic.out(i,0.75)",
+      },
+    );
+  });
+</script><style>
+  .artwork-section {
+    align-items: center;
+  }
+
+  .artwork-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    align-content: stretch;
+    position: relative;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .artwork {
+    background: var(--comp-background);
+    padding: 0.5rem 0.5rem 0.9rem;
+    border-radius: 20px;
+    text-align: center;
+    width: min(100%, 240px);
+  }
+
+  .artwork img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .artwork p {
+    margin: 10px auto 2px;
+    font-family: var(--font-Lilita);
+    font-size: clamp(18px, 2vw + 5px, 1.5rem);
+  }
+
+  .artwork small {
+    color: #c7c3c3;
+    font-weight: 500;
+  }
+
+  @media Screen and (min-width: 1000px) {
     .artwork-wrapper {
-        display: inline-flex;
-        align-items: baseline;
-        flex-wrap: wrap;
-        align-content: stretch;
-        position: relative;
-        gap: 2rem;
-        justify-content: center;
-    }
-    .artwork {
-        background: var(--comp-background);
-        padding: 0.5rem 0.5rem 0.9rem;
-        border-radius: 20px;
-        text-align: center;
-        width: min(100%, 240px);
-    }
-    .artwork img {
-        width: 100%;
-        object-fit: cover;
-        border-radius: 15px;
+      margin: 3rem auto;
+      width: 75%;
+      gap: 2.5rem;
     }
 
-    .artwork p {
-        margin: 10px auto 2px;
-        font-family: var(--font-Lilita);
-        font-size: clamp(18px, 2vw + 5px, 1.5rem);
-    }
-    .artwork small {
-        color: #c7c3c3;
-        font-weight: 500;
+    .artwork:nth-child(even) {
+      transform: translateY(-30px);
     }
 
-    @media Screen and (min-width: 1000px) {
-        .artwork-wrapper {
-            margin: 3rem auto;
-            width: 75%;
-            gap: 2.5rem;
-        }
-        .artwork:nth-child(even) {
-            transform: translateY(-30px);
-        }
-        .artwork:nth-child(odd) {
-            transform: translateY(30px);
-        }
+    .artwork:nth-child(odd) {
+      transform: translateY(30px);
     }
+  }
 </style>
