@@ -19,6 +19,6 @@ __You can view the live site *[Live Site](https://astro-animation-website.vercel
 ![NFT Gallery Section](./public/gallery.png)
 ![NFT Mint Section](./public/mint-section.png)
 ![NFT Artwork Section](./public/artwork.png)
-![NFT Artist Section](./public/artist.png)
+![NFT Artist Section](./public/artists.png)
 ![NFT About Section](./public/about.png)
 ![NFT FAQ Section](./public/accordian.png)
